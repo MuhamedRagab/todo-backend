@@ -59,10 +59,21 @@ const deleteTodo = async (req, res) => {
   }
 };
 
+const clearTodos = async (req, res) => {
+  try {
+    const { userId } = req.params;
+    await Todo.deleteMany({ user: userId });
+    res.status(200).json({ message: "Todo deleted successfully" });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
 module.exports = {
   createTodo,
   getTodos,
   getTodo,
   updateTodo,
   deleteTodo,
+  clearTodos,
 };
