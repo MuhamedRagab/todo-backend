@@ -61,8 +61,7 @@ const deleteTodo = async (req, res) => {
 
 const clearTodos = async (req, res) => {
   try {
-    const { userId } = req.params;
-    await Todo.deleteMany({ user: userId });
+    await Todo.deleteMany({ user: req.userId });
     res.status(200).json({ message: "Todos deleted successfully" });
   } catch (error) {
     res.status(500).json({ message: error.message });
