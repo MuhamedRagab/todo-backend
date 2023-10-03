@@ -14,6 +14,6 @@ router.post("/", createTodo);
 router.get("/:id", getTodo);
 router.patch("/:id", updateTodo);
 router.delete("/:id", deleteTodo);
-router.delete("/:userId", clearTodos);
+router.delete("/clear/:userId", clearTodos);
 
 module.exports = router;
